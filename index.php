@@ -51,7 +51,6 @@ require_once "part/header.php";
         <tbody>
             <?php
             if ($getSiswa['total'] >= 1) {
-
                 $noUrut = 0;
                 foreach ($getSiswa['siswa'] as $value) {
                     // deklarasi variable
@@ -68,7 +67,7 @@ require_once "part/header.php";
                         <td><?= $id; ?></td>
                         <td><b><?= $nam; ?></b> <br> <?= $nis; ?></td>
                         <td><?= $tgl; ?></td>
-                        <td><?= $id_sekolah; ?></td>
+                        <td><?= $nas; ?></td>
                         <td>
                             <div class="btn-group btn-sm" role="group">
                                 <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
