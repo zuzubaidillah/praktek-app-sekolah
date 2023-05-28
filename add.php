@@ -1,7 +1,19 @@
 <?php
+require_once "koneksi.php";
+require_once "Helper/function.php";
 $head_title = "Add Siswa - APP Pendidikan";
 $nav_label = "Proses Create/menambahkan data siswa";
 require_once "part/header.php";
+$dtSekolah = showSekolah();
+
+$renderOptionSekolah = "";
+if ($dtSekolah['total']>=1) {
+    foreach ($dtSekolah['sekolah'] as $v) {
+        $idSek = $v['id'];
+        $naSek = $v['nama'];
+        $renderOptionSekolah .= "<option value=\"$idSek\">$naSek</option>";
+    }
+}
 ?>
 
 <div class="container mt-5  pt-5">
@@ -18,8 +30,7 @@ require_once "part/header.php";
                     <label for="txtsekolah" class="form-label">Pilih Sekolah</label>
                     <select type="text" class="form-control" id="txtsekolah" name="txtsekolah" required>
                         <option value="">--pilih sekolah--</option>
-                        <option value="3">SMA 01 Malang</option>
-                        <option value="4">SMP 01 Jombang</option>
+                        <?=$renderOptionSekolah?>
                     </select>
                     <div class="form-text">Harus diisi</div>
                 </div>

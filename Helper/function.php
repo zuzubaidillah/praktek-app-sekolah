@@ -90,3 +90,20 @@ function deletePermanenSiswa($idSiswa): array
     $hasil = mysqli_affected_rows($conn);
     return ["hasil" => $hasil];
 }
+
+// mengambil data sekolah
+function showSekolah(): array
+{
+    global $conn;
+    // deteksi request get
+    $sql = "SELECT * FROM sekolah WHERE is_delete='0' ORDER BY nama ASC";
+
+    $query = mysqli_query($conn, $sql);
+    $dtSekolah = mysqli_fetch_all($query, MYSQLI_ASSOC);
+    $jmlData = mysqli_num_rows($query);
+
+    return [
+        "sekolah" => $dtSekolah,
+        "total" => $jmlData,
+    ];
+}
