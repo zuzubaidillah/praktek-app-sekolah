@@ -20,6 +20,26 @@ function showSiswa($isDelete): array
     ];
 }
 
+function showSiswaWhereId($idSekolah): array
+{
+    global $conn;
+    $sql = "SELECT
+        siswa.*, sekolah.nama AS namaSekolah
+    FROM siswa
+        INNER JOIN sekolah 
+        ON siswa.id_sekolah=sekolah.id
+    WHERE siswa.id_sekolah='$idSekolah' ORDER BY siswa.nama ASC";
+
+    $query = mysqli_query($conn, $sql);
+    $dtSiswa = mysqli_fetch_all($query, MYSQLI_ASSOC);
+    $jmlData = mysqli_num_rows($query);
+
+    return [
+        "siswa" => $dtSiswa,
+        "total" => $jmlData,
+    ];
+}
+
 function addSiswa($sekolah, $nama, $nis, $tanggal, $isDelete=0): array
 {
     global $conn;

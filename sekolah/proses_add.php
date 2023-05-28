@@ -1,5 +1,5 @@
 <?php
-require_once "koneksi.php";
+require_once "../koneksi.php";
 require_once "Helper/function.php";
 
 // ----versi 1
