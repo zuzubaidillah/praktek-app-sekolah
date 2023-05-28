@@ -19,6 +19,7 @@ if (isset($_GET['message'])) {
 }
 $head_title = "Data Siswa - APP Pendidikan";
 $nav_label = "Proses Read/mengambil data siswa";
+$mnPage = "mnsiswa";
 require_once "part/header.php";
 ?>
 <div class="container mt-5  pt-5">
@@ -92,6 +93,10 @@ require_once "part/header.php";
         </tbody>
     </table>
 </div>
+    <!--<script>
+        let mn = document.getElementById('mnsiswa');
+        mn.classList.add('active');
+    </script>-->
 
 <?php
 require_once "part/footer.php";
