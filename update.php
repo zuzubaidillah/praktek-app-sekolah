@@ -2,7 +2,7 @@
 require_once "koneksi.php";
 require_once "Helper/function.php";
 
-// kita ambil ID yang dikirim
+// kita ambil ID yang dikirim id dari URL
 $id = htmlspecialchars($_GET["id"], ENT_QUOTES);
 // mengambil data sesuai ID dengan melalui function yang memiliki arguments 1 yaitu $id, ini seperti kita mengirimkan ID ke blok function tersebut
 $getSiswa = showSiswaSesuaiId($id);
@@ -10,25 +10,19 @@ if ($getSiswa['total'] == 0) {
     header('Location: index.php');
     exit();
 }
-$idSekolah = $getSiswa['siswa']['id'];
+$idSiswa = $getSiswa['siswa']['id'];
+$idSekolah = $getSiswa['siswa']['id_sekolah'];
 $namaSiswa = $getSiswa['siswa']['nama'];
 $nis = $getSiswa['siswa']['nis'];
 $tgl = $getSiswa['siswa']['tgl_lahir'];
-$dtSekolah = [
-    [
-        "id" => 3,
-        "nama" => "SMA 01 Malang",
-    ],
-    [
-        "id" => 4,
-        "nama" => "SMP 01 Jombang",
-    ],
-];
+
+$dtSekolah = showSekolah();
 $hasilSekolah = '';
-foreach ($dtSekolah as $value) {
+foreach ($dtSekolah['sekolah'] as $value) {
     $selId = $value['id'];
     $selNama = $value['nama'];
-    $selected = 'selected';
+
+    $selected = '';
     if ($idSekolah == $selId) {
         $selected = 'selected';
     }
