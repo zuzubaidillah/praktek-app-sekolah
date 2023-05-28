@@ -7,8 +7,8 @@ function showSiswa($isDelete): array
         siswa.*, sekolah.nama AS namaSekolah
     FROM siswa
         INNER JOIN sekolah 
-        ON siswa.id_sekolah=sekolah.id 
-    WHERE siswa.is_delete='$isDelete' ORDER BY siswa.nama ASC";
+        ON siswa.id_sekolah=sekolah.id
+    WHERE siswa.is_delete='$isDelete' AND sekolah.is_delete='0' ORDER BY siswa.nama ASC";
 
     $query = mysqli_query($conn, $sql);
     $dtSiswa = mysqli_fetch_all($query, MYSQLI_ASSOC);
