@@ -22,7 +22,7 @@ require_once "../part/header.php";
 
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <form class="" action="proses_add.php" method="post">
+            <form class="" action="/sekolah/proses_add.php" method="post">
                 <div class="row">
                     <div class=" mb-3 col-md-6">
                         <label for="txtid" class="form-label">Id</label>

@@ -7,7 +7,7 @@ require_once "../Helper/function.php";
 $id = htmlspecialchars($_GET['id'], ENT_QUOTES);
 // validasi dengan data siswa
 $dtSiswa = showSiswaWhereId($id);
-if($dtSiswa['total']>=1){
+if ($dtSiswa['total'] >= 1) {
     $message = "sekolah masih memiliki siswa";
     $resultMessage = str_replace(" ", "-", $message);
     header("Location: /sekolah/index.php?showDelete=on&message=$resultMessage");

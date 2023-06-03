@@ -87,6 +87,8 @@ require_once "part/header.php";
                     </tr>
             <?php
                 }
+            }else{
+                echo "<tr><td colspan='6' class='text-center'><h1>Data Kosong</h1></td></tr>";
             }
             ?>
         </tbody>
