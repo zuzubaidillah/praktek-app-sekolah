@@ -5,10 +5,10 @@ function showSekolah2(): array
     global $conn;
     // deteksi request get
     if (isset($_GET['showDelete'])) {
-        $sql = "SELECT * FROM sekolah WHERE is_delete='1' ORDER BY nama ASC";
+        $sql = "SELECT sek.*, (select count(*) from siswa AS sis where sis.id_sekolah=sek.id) memiliki_siswa FROM sekolah AS sek WHERE sek.is_delete='1' ORDER BY sek.nama ASC";
         $isDelete  = true;
     } else {
-        $sql = "SELECT * FROM sekolah WHERE is_delete='0' ORDER BY nama ASC";
+        $sql = "SELECT sek.*, (select count(*) from siswa AS sis where sis.id_sekolah=sek.id) memiliki_siswa FROM sekolah AS sek WHERE sek.is_delete='0' ORDER BY sek.nama ASC";
         $isDelete  = false;
     }
 
