@@ -50,6 +50,7 @@ require_once "../part/header.php";
             if ($getSekolah['total'] >= 1) {
 
                 $noUrut = 0;
+                $urlShowDelete = ($isDel == 1 ? "&showDelete=on" : "");
                 foreach ($getSekolah['sekolah'] as $value) {
                     // deklarasi variable
                     $nam = $value['nama'];
@@ -83,13 +84,13 @@ require_once "../part/header.php";
                                             </a>
                                         </li>
                                     <?php } else { ?>
-                                        <li><a class="dropdown-item" href="/sekolah/proses_tarik.php?id=<?= $id; ?>"
+                                        <li><a class="dropdown-item" href="/sekolah/proses_tarik.php?id=<?= $id.$urlShowDelete; ?>"
                                                onclick="return confirm('Yakin kembalikan data? data akan mengalami perubahan status saja tanpa menghilangkan data')">Kemalikan
                                                 Data</a></li>
                                         <li>
                                             <?php if ($memiliki_siswa == 0) { ?>
                                                 <a class="dropdown-item"
-                                                   href="/sekolah/proses_delete_permanen.php?id=<?= $id; ?>"
+                                                   href="/sekolah/proses_delete_permanen.php?id=<?= $id.$urlShowDelete; ?>"
                                                    onclick="return confirm('Yakin hapus permanen? data akan mengalami  hilang pada database')">Hapus
                                                     Permanen</a>
                                             <?php } else { ?>

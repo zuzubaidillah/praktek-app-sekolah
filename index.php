@@ -52,6 +52,7 @@ require_once "part/header.php";
             <?php
             if ($getSiswa['total'] >= 1) {
                 $noUrut = 0;
+                $urlShowDelete = ($isDel == 1 ? "&showDelete=on" : "");
                 foreach ($getSiswa['siswa'] as $value) {
                     // deklarasi variable
                     $nam = $value['nama'];
@@ -75,11 +76,11 @@ require_once "part/header.php";
                                 </button>
                                 <ul class="dropdown-menu" aria-labelledby="btnGroupDrop1">
                                     <?php if ($isDelete == 0) { ?>
-                                        <li><a class="dropdown-item" href="/update.php?id=<?= $id; ?>">Edit</a></li>
-                                        <li><a class="dropdown-item" href="/proses_delete.php?id=<?=$id?>" onclick="return confirm('Data akan diletakkan di tempat arsip. silahkan ceklist show arsip jika ingin melihatnya lagi')">Arsipkan</a></li>
+                                        <li><a class="dropdown-item" href="/update.php?id=<?= $id.$urlShowDelete; ?>">Edit</a></li>
+                                        <li><a class="dropdown-item" href="/proses_delete.php?id=<?=$id.$urlShowDelete?>" onclick="return confirm('Data akan diletakkan di tempat arsip. silahkan ceklist show arsip jika ingin melihatnya lagi')">Arsipkan</a></li>
                                     <?php } else { ?>
-                                        <li><a class="dropdown-item" href="/proses_tarik.php?id=<?= $id; ?>" onclick="return confirm('Yakin kembalikan data? data akan mengalami perubahan status saja tanpa menghilangkan data')">Kemalikan Data</a></li>
-                                        <li><a class="dropdown-item" href="/proses_delete_permanen.php?id=<?= $id; ?>" onclick="return confirm('Yakin hapus permanen? data akan mengalami  hilang pada database')">Hapus Permanen</a></li>
+                                        <li><a class="dropdown-item" href="/proses_tarik.php?id=<?= $id.$urlShowDelete; ?>" onclick="return confirm('Yakin kembalikan data? data akan mengalami perubahan status saja tanpa menghilangkan data')">Kemalikan Data</a></li>
+                                        <li><a class="dropdown-item" href="/proses_delete_permanen.php?id=<?= $id.$urlShowDelete; ?>" onclick="return confirm('Yakin hapus permanen? data akan mengalami  hilang pada database')">Hapus Permanen</a></li>
                                     <?php } ?>
                                 </ul>
                             </div>

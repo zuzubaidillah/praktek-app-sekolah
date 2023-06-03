@@ -15,10 +15,11 @@ if ($dtSiswa['total'] >= 1) {
 }
 $resUpdate = deletePermanenSekolah($id);
 // ----versi 1
+$urlShowDelete = (isset($_GET['showDelete']) ? "&showDelete=on" : "");
 
 if ($resUpdate['hasil'] == 1) {
-    header("Location: /sekolah/index.php?showDelete=on&message=berhasil-di-hapus");
+    header("Location: /sekolah/index.php?showDelete=on&message=berhasil-di-hapus$urlShowDelete");
     exit();
 }
-header("Location: /sekolah/index.php?showDelete=on&message=gagal-di-hapus");
+header("Location: /sekolah/index.php?showDelete=on&message=gagal-di-hapus$urlShowDelete");
 exit();
